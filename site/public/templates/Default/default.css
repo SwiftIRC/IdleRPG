@@ -1,0 +1,48 @@
+.navbar-wrapper {
+	position: relative;
+	z-index: 10;
+	margin-top: 20px;
+}
+
+.navbar .brand {
+	padding-right: 0;
+	padding-left: 0;
+	margin-left: 20px;
+	float: right;
+	font-weight: bold;
+	color: black;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+.navbar .brand:hover {
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .4);
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -60px;
+}
+
+#footer {
+	background-color: whiteSmoke;
+	height: 60px;
+}
+
+.container .credit {
+	margin: 20px 0;
+}
+
+.table-no-border th, .table-no-border td {
+	border: none;
+}
+
+.map {
+	background: url('map-background.png') center no-repeat;
+	text-align: center;
+}
