@@ -107,7 +107,7 @@ my %quest = (
     questers => [],
     p1 => [], # point 1 for q2
     p2 => [], # point 2 for q2
-    qtime => time() + int(rand(21600)), # first quest starts in <=6 hours
+    qtime => time() + int(rand(3600)), # first quest starts in <=1 hour
     text => "",
     type => 1,
     stage => 1); # quest info
@@ -1511,7 +1511,7 @@ sub moveplayers {
                     $rps{$_}{next} = int($rps{$_}{next} * .75);
                 }
                 undef(@{$quest{questers}});
-                $quest{qtime} = time() + 21600; # next quest starts in 6 hours
+                $quest{qtime} = time() + 3600; # next quest starts in 1 hour
                 $quest{type} = 1; # probably not needed
                 writequestfile();
             }
