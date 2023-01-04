@@ -107,7 +107,7 @@ my %quest = (
     questers => [],
     p1 => [], # point 1 for q2
     p2 => [], # point 2 for q2
-    qtime => time() + int(rand(21600)), # first quest starts in <=6 hours
+    qtime => time() + int(rand(3600)), # first quest starts in <=1 hour
     text => "",
     type => 1,
     stage => 1); # quest info
@@ -1147,7 +1147,7 @@ sub rpcheck { # check levels, update database
         }
         backup();
     }
-    if ($rpreport%3600==0 && $rpreport) { # 1 hour
+    if ($rpreport%1200==0 && $rpreport) { # 20 minutes
         my @players = grep { $rps{$_}{online} &&
                              $rps{$_}{level} > 44 } keys(%rps);
         # 20% of all players must be level 45+
@@ -1511,7 +1511,7 @@ sub moveplayers {
                     $rps{$_}{next} = int($rps{$_}{next} * .75);
                 }
                 undef(@{$quest{questers}});
-                $quest{qtime} = time() + 21600; # next quest starts in 6 hours
+                $quest{qtime} = time() + 3600; # next quest starts in 1 hour
                 $quest{type} = 1; # probably not needed
                 writequestfile();
             }
@@ -1900,11 +1900,8 @@ sub questpencheck {
     for $quester (@{$quest{questers}}) {
         if ($quester eq $k) {
             chanmsg(clog("$k\'s prudence and self-regard has brought the ".
-                         "wrath of the gods upon the realm. All your great ".
-                         "wickedness makes you as it were heavy with lead, ".
-                         "and to tend downwards with great weight and ".
-                         "pressure towards hell. Therefore have you drawn ".
-                         "yourselves 15 steps closer to that gaping maw."));
+                         "wrath of the gods upon the realm. Hell rains down ".
+                         "upon you as you beg for the sweet release of death."));
             for $player (grep { $rps{$_}{online} } keys %rps) {
                 my $gain = int(15 * ($opts{rppenstep}**$rps{$player}{level}));
                 $rps{$player}{pen_quest} += $gain;
