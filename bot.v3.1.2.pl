@@ -1147,7 +1147,7 @@ sub rpcheck { # check levels, update database
         }
         backup();
     }
-    if ($rpreport%3600==0 && $rpreport) { # 1 hour
+    if ($rpreport%1200==0 && $rpreport) { # 20 minutes
         my @players = grep { $rps{$_}{online} &&
                              $rps{$_}{level} > 44 } keys(%rps);
         # 20% of all players must be level 45+
