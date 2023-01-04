@@ -1900,11 +1900,8 @@ sub questpencheck {
     for $quester (@{$quest{questers}}) {
         if ($quester eq $k) {
             chanmsg(clog("$k\'s prudence and self-regard has brought the ".
-                         "wrath of the gods upon the realm. All your great ".
-                         "wickedness makes you as it were heavy with lead, ".
-                         "and to tend downwards with great weight and ".
-                         "pressure towards hell. Therefore have you drawn ".
-                         "yourselves 15 steps closer to that gaping maw."));
+                         "wrath of the gods upon the realm. Hell rains down ".
+                         "upon you as you beg for the sweet release of death."));
             for $player (grep { $rps{$_}{online} } keys %rps) {
                 my $gain = int(15 * ($opts{rppenstep}**$rps{$player}{level}));
                 $rps{$player}{pen_quest} += $gain;
