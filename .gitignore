@@ -1,0 +1,7 @@
+site/public/templates/Default/tpl_compiled/*.php
+modifiers.txt
+irpg.db
+irpg.pid
+.irpg.conf
+*.bak
+.dbbackup
