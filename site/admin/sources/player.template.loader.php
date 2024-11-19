@@ -165,6 +165,7 @@ function sort_user_items($items)
 {
     $sum = 0;
     foreach ($items as $slot => $item) {
+        $sum += $item;
         if ($slot == "helm" && substr($item, -1, 1) == "a") {
             $item = intval($item) . " (Mattt's Omniscience Grand Crown)";
         }if ($slot == "tunic" && substr($item, -1, 1) == "b") {
@@ -183,7 +184,6 @@ function sort_user_items($items)
             $item = intval($item) . " (Juliet's Glourious Ring of Sparkliness)";
         }
         $items[$slot] = $item;
-        $sum += $item;
     }
     $items['sum'] = $sum;
 
