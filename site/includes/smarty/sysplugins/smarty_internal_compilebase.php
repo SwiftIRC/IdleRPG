@@ -75,7 +75,7 @@ abstract class Smarty_Internal_CompileBase {
 //                $kv = each($mixed);
                 $kv = [$key => $mixed];
                 // option flag?
-                if (in_array($kv['key'], $this->option_flags)) {
+                if (array_key_exists('key', $kv) && in_array($kv['key'], $this->option_flags)) {
                     if (is_bool($kv['value'])) {
                         $_indexed_attr[$kv['key']] = $kv['value'];
                     } else if (is_string($kv['value']) && in_array(trim($kv['value'], '\'"'), array('true', 'false'))) {
