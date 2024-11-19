@@ -8,8 +8,8 @@
 * @subpackage Compiler
 * @author Uwe Tews
 */
-
-class TP_yyToken implements ArrayAccess
+#[AllowDynamicProperties]
+class TP_yyToken extends stdClass implements ArrayAccess
 {
     public $string = '';
     public $metadata = array();
@@ -34,17 +34,15 @@ class TP_yyToken implements ArrayAccess
         return $this->_string;
     }
 
-    function offsetExists($offset)
-    {
+    public function offsetExists($offset): bool {
         return isset($this->metadata[$offset]);
     }
 
-    function offsetGet($offset)
-    {
-        return $this->metadata[$offset];
+    public function offsetGet($offset): mixed {
+        return isset($this->metadata[$offset]) ? $this->metadata[$offset] : null;
     }
 
-    function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if ($offset === null) {
             if (isset($value[0])) {
@@ -67,7 +65,7 @@ class TP_yyToken implements ArrayAccess
         }
     }
 
-    function offsetUnset($offset)
+    function offsetUnset($offset): void
     {
         unset($this->metadata[$offset]);
     }
@@ -84,7 +82,8 @@ class TP_yyStackEntry
 
 
 #line 12 "smarty_internal_templateparser.y"
-class Smarty_Internal_Templateparser#line 79 "smarty_internal_templateparser.php"
+#[AllowDynamicProperties]
+class Smarty_Internal_Templateparser extends stdClass#line 79 "smarty_internal_templateparser.php"
 {
 #line 14 "smarty_internal_templateparser.y"
 

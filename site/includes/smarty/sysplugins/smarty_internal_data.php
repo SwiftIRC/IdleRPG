@@ -489,6 +489,9 @@ class Smarty_Variable
      */
     public $scope = Smarty::SCOPE_LOCAL;
 
+    public $key = null;
+    public $_loop = false;
+
     /**
      * create Smarty variable object
      *
