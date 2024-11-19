@@ -15,7 +15,9 @@
  * @package Smarty
  * @subpackage Template
  */
-class Smarty_Internal_Data {
+#[AllowDynamicProperties]
+class Smarty_Internal_Data extends stdClass
+{
 
     /**
      * name of class used for templates
@@ -129,7 +131,7 @@ class Smarty_Internal_Data {
                         settype($this->tpl_vars[$_key]->value, 'array');
                     }
                     if ($merge && is_array($_val)) {
-                        foreach($_val as $_mkey => $_mval) {
+                        foreach ($_val as $_mkey => $_mval) {
                             $this->tpl_vars[$_key]->value[$_mkey] = $_mval;
                         }
                     } else {
@@ -151,7 +153,7 @@ class Smarty_Internal_Data {
                     settype($this->tpl_vars[$tpl_var]->value, 'array');
                 }
                 if ($merge && is_array($value)) {
-                    foreach($value as $_mkey => $_mval) {
+                    foreach ($value as $_mkey => $_mval) {
                         $this->tpl_vars[$tpl_var]->value[$_mkey] = $_mval;
                     }
                 } else {
@@ -181,7 +183,7 @@ class Smarty_Internal_Data {
                 settype($this->tpl_vars[$tpl_var]->value, 'array');
             }
             if ($merge && is_array($value)) {
-                foreach($value as $_key => $_val) {
+                foreach ($value as $_key => $_val) {
                     $this->tpl_vars[$tpl_var]->value[$_key] = &$value[$_key];
                 }
             } else {
@@ -214,7 +216,7 @@ class Smarty_Internal_Data {
             if ($_ptr === null) {
                 $_ptr = $this;
             } while ($_ptr !== null) {
-                foreach ($_ptr->tpl_vars AS $key => $var) {
+                foreach ($_ptr->tpl_vars as $key => $var) {
                     if (!array_key_exists($key, $_result)) {
                         $_result[$key] = $var->value;
                     }
@@ -227,7 +229,7 @@ class Smarty_Internal_Data {
                 }
             }
             if ($search_parents && isset(Smarty::$global_tpl_vars)) {
-                foreach (Smarty::$global_tpl_vars AS $key => $var) {
+                foreach (Smarty::$global_tpl_vars as $key => $var) {
                     if (!array_key_exists($key, $_result)) {
                         $_result[$key] = $var->value;
                     }
@@ -351,7 +353,7 @@ class Smarty_Internal_Data {
         $_result = '';
         $fp = fopen($variable, 'r+');
         if ($fp) {
-            while (!feof($fp) && ($current_line = fgets($fp)) !== false ) {
+            while (!feof($fp) && ($current_line = fgets($fp)) !== false) {
                 $_result .= $current_line;
             }
             fclose($fp);
@@ -383,7 +385,7 @@ class Smarty_Internal_Data {
             } else {
                 $var_array = array_merge($_ptr->config_vars, $var_array);
             }
-             // not found, try at parent
+            // not found, try at parent
             if ($search_parents) {
                 $_ptr = $_ptr->parent;
             } else {
@@ -423,7 +425,8 @@ class Smarty_Internal_Data {
  * @package Smarty
  * @subpackage Template
  */
-class Smarty_Data extends Smarty_Internal_Data {
+class Smarty_Data extends Smarty_Internal_Data
+{
 
     /**
      * Smarty object
@@ -438,7 +441,7 @@ class Smarty_Data extends Smarty_Internal_Data {
      * @param Smarty|array $_parent  parent template
      * @param Smarty       $smarty   global smarty instance
      */
-    public function __construct ($_parent = null, $smarty = null)
+    public function __construct($_parent = null, $smarty = null)
     {
         $this->smarty = $smarty;
         if (is_object($_parent)) {
@@ -464,7 +467,8 @@ class Smarty_Data extends Smarty_Internal_Data {
  * @package Smarty
  * @subpackage Template
  */
-class Smarty_Variable {
+class Smarty_Variable
+{
 
     /**
      * template variable
@@ -519,7 +523,8 @@ class Smarty_Variable {
  * @package Smarty
  * @subpackage Template
  */
-class Undefined_Smarty_Variable {
+class Undefined_Smarty_Variable
+{
 
     /**
      * Returns FALSE for 'nocache' and NULL otherwise.
@@ -547,5 +552,3 @@ class Undefined_Smarty_Variable {
     }
 
 }
-
-?>
